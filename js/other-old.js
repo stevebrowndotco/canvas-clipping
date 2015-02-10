@@ -94,4 +94,4 @@ function clip() {
 
 // Specify the src to load the image
 img.src = "img/darth-vader.jpg";
-img2.src = "http://farm6.staticflickr.com/5496/9585303170_d005d2aaa9_n.jpg";
+img2.src = "img/darth-vader.jpg";
