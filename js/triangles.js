@@ -5,9 +5,10 @@ var stage = new Kinetic.Stage({
 });
 
 var container = document.getElementById('container'),
-    layer = new Kinetic.Layer();
+    layer = new Kinetic.Layer(),
+    iterations = 8;
 
-for (var i = 0; i < 3; i++) {
+for (var i = 0; i < iterations; i++) {
     createTriangleGroup(i)
 }
 
@@ -24,7 +25,7 @@ function createTriangleGroup(i) {
                 self = this,
                 xo = -34,           // x overlap
                 w = 248,            // triangle width
-                x = (i * w) + w;    // x position
+                x = (i * w);    // x position
             img.src = 'img/pattern.jpg';
 
             img.onload = function () {
@@ -80,8 +81,8 @@ function createTriangleGroup(i) {
             }
         }
     });
-    
-    layer.add(leftTriangle);
+
+    layer.add(leftTriangle, rightTriangle);
 
 };
 
