@@ -69,27 +69,27 @@ function clip() {
         polygon(ctx, true, img2, -30, 0, x + 250, y);
 
     }
-    for (var i = 0; i < 3; i++) {
-
-        var _x = (i * 240) + 440;
-        var _y = i * 140
-
-        console.log(_x);
-
-        polygon(ctx, false, img, -30, 0, _x, _y);
-        polygon(ctx, true, img2, -30, 0, _x + 250, _y);
-
-    }
-    for (var i = 0; i < 3; i++) {
-
-        var _x = (i * 240) + 900;
-        var _y = i * 140
-
-
-        polygon(ctx, false, img, -30, 0, _x, _y);
-        polygon(ctx, true, img2, -30, 0, _x + 250, _y);
-
-    }
+    //for (var i = 0; i < 3; i++) {
+    //
+    //    var _x = (i * 240) + 440;
+    //    var _y = i * 140
+    //
+    //    console.log(_x);
+    //
+    //    polygon(ctx, false, img, -30, 0, _x, _y);
+    //    polygon(ctx, true, img2, -30, 0, _x + 250, _y);
+    //
+    //}
+    //for (var i = 0; i < 3; i++) {
+    //
+    //    var _x = (i * 240) + 900;
+    //    var _y = i * 140
+    //
+    //
+    //    polygon(ctx, false, img, -30, 0, _x, _y);
+    //    polygon(ctx, true, img2, -30, 0, _x + 250, _y);
+    //
+    //}
 }
 
 // Specify the src to load the image

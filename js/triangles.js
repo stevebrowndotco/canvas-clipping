@@ -11,40 +11,9 @@ var container = document.getElementById('container'),
 for (var i = 0; i < iterations; i++) {
 
     createTriangleGroup(i);
-
-}
-;
+};
 
 stage.add(layer);
-
-
-//var triangle = new Kinetic.Shape({
-//
-//    sceneFunc: function (ctx) {
-//        var img = document.createElement('img'),
-//            self = this,
-//            xo = -34,           // x overlap
-//            w = 248,            // triangle width
-//            x = (i * w);    // x position
-//        img.src = 'img/pattern.jpg';
-//
-//        img.onload = function () {
-//            ctx.save();
-//            ctx.beginPath();
-//            ctx.moveTo(0 + x, 0);
-//            ctx.lineTo(207 + x, 140);
-//            ctx.lineTo(-34 + x, w);
-//            ctx.lineTo(0 + x, 0);
-//            ctx.clip();
-//            ctx.drawImage(img, (0 + x) + xo, 0, img.width, img.height);
-//            ctx.stroke();
-//            ctx.closePath();
-//            ctx.fillStrokeShape(self);
-//            ctx.restore();
-//        }
-//    }
-//})
-
 
 function createTriangleGroup(i) {
 
@@ -54,47 +23,36 @@ function createTriangleGroup(i) {
             sceneFunc: function (ctx) {
                 var img = document.createElement('img'),
                     self = this,
-                    xo = -34,           // x overlap
                     w = 248,            // triangle width
-                    x = (i * w);    // x position
+                    xm = (i * w),       // x modifier,
 
-                if (direction === 'left') {
+                    x1 = 0,
+                    x2 = direction === 'left' ? 207 : 243,
+                    x3 = direction === 'left' ? -34 : 208,
+                    y1 = direction === 'left' ? x1 : 115,
+                    y2 = direction === 'left' ? 140 : x1,
+                    y3 = direction === 'left' ? w : 248,
+
+                    imgx = direction === 'left' ? xm + x3 : xm;
+
                     img.src = 'img/pattern.jpg';
 
                     img.onload = function () {
                         ctx.save();
                         ctx.beginPath();
-                        ctx.moveTo(0 + x, 0);
-                        ctx.lineTo(207 + x, 140);
-                        ctx.lineTo(-34 + x, w);
-                        ctx.lineTo(0 + x, 0);
+                        ctx.moveTo(x1 + xm, y1);
+                        ctx.lineTo(x2 + xm, y2);
+                        ctx.lineTo(x3 + xm, y3);
+                        ctx.lineTo(x1 + xm, y1);
                         ctx.clip();
-                        ctx.drawImage(img, (0 + x) + xo, 0, img.width, img.height);
+                        ctx.drawImage(img, imgx, 0, img.width, img.height);
                         ctx.stroke();
                         ctx.closePath();
                         ctx.fillStrokeShape(self);
                         ctx.restore();
                     }
-                } else {
-                    var img = document.createElement('img'),
-                        self = this;
-                    img.src = 'img/darth-vader.jpg';
-                    img.onload = function () {
-                        ctx.save();
-                        ctx.beginPath();
-                        ctx.moveTo(0 + x, 115);
-                        ctx.lineTo(243 + x, 0);
-                        ctx.lineTo(208 + x, w);
-                        ctx.lineTo(0 + x, 115);
-                        ctx.clip();
-                        ctx.drawImage(img, (0 + x) + xo, 0, img.width, img.height);
-                        ctx.closePath();
-                        ctx.fillStrokeShape(self);
-                        ctx.restore();
-                    }
-
                 }
-            }
+
 
         })
         .on('mousedown', function (e) {
@@ -112,7 +70,6 @@ function createTriangleGroup(i) {
         })
 
     }
-
 
     layer.add(triangle('left'), triangle('right'));
 
