@@ -1,3 +1,6 @@
+angular
+
+
 var stage = new Kinetic.Stage({
     container: 'container',
     width: window.innerWidth,
@@ -14,7 +17,7 @@ var container = document.getElementById('container'),
 var createShape = function (row, col, padding, length) {
 
     return new Kinetic.Shape({
- 
+
         sceneFunc: function (ctx) {
 
             var img = document.createElement('img'),

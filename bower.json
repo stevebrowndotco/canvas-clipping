@@ -1,0 +1,21 @@
+{
+  "name": "sb-triangle-grid",
+  "version": "0.1",
+  "authors": [
+    "Steve Brown <contactstevebrown@gmail.com>"
+  ],
+  "description": "A directive that makes a grid of triangles using kinetic js",
+  "main": "modules/sb-triangle-grid/sb-triangle-grid.js",
+  "keywords": [
+    "Triangle",
+    "Grid",
+    "Directive",
+    "Angular"
+  ],
+  "dependencies": {
+    "angular" : "latest",
+    "kinetic" : "latest"
+  },
+  "license": "Copyright",
+  "homepage": "stevebrown.co"
+}
