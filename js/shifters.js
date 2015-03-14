@@ -44,8 +44,10 @@ if (elem.getContext) {
         //draw image this way
         var img = new Image();
         img.src ='img/darth-vader.jpg';
+        console.log()
         img.onload = function() {
-            //context.drawImage(img, x, y);
+            console.log(img);
+            context.drawImage(img, x, y);
         };
 
         context.stroke();
