@@ -9,20 +9,20 @@ var container = document.getElementById('container'),
     iterations = 6,
     triangleHeight = 4
 
-var shape = function (a, b, radius) {
+var shape = function (a, b, radius, direction) {
 
     return new Kinetic.Shape({
 
         sceneFunc: function (ctx) {
 
+            console.log(direction)
             var img = document.createElement('img'),
                 self = this,
-                xm = (a * 218) + (b * radius) - (window.innerWidth / 2),
-                ym = (a * 140) - (b * (radius / 2)) + (window.innerHeight / 2),
+                xm = (a * 218) + (b * (radius * 2)) - (window.innerWidth / 2),
+                ym = (a * 140) - (b * ((radius / 2) * 2)) + (window.innerHeight / 2),
                 imgx = xm,
                 imgy = ym,
-                h = ((Math.PI * 2)/3),
-                direction = 1;
+                h = ((Math.PI * 2)/3);
 
             img.src = 'img/pattern.jpg';
 
@@ -33,9 +33,6 @@ var shape = function (a, b, radius) {
                 ctx.moveTo(radius * direction + xm, 0 + ym);
                 ctx.lineTo(radius * direction * Math.cos(h) + xm, radius * Math.sin(h) + ym);
                 ctx.lineTo(radius * direction * Math.cos(h * 2) + xm, radius * Math.sin(h * 2) + ym);
-
-
-                //debugger;
                 ctx.clip();
                 ctx.drawImage(img, imgx, imgy, img.width, img.height);
                 ctx.closePath();
@@ -72,7 +69,7 @@ var shape = function (a, b, radius) {
 
 for (var a = 0; a < triangleHeight; a++) {
     for (var b = 0; b < iterations; b++) {
-        layer.add(shape(a, b, 100, 5));
+        layer.add(shape(a, b, 100, (b % 2) === 1 ? 1 : -1));
     };
 };
 
