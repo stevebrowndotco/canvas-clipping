@@ -6,25 +6,32 @@ var stage = new Kinetic.Stage({
 
 var container = document.getElementById('container'),
     layer = new Kinetic.Layer(),
-    iterations = 6,
-    triangleHeight = 4
+    iterations = 3,
+    triangleHeight = 3;
 
-var shape = function (a, b, radius, direction) {
+var shape = function (rows, cols, padding, radius, direction) {
+
+    rows += 1;
+    cols += 1;
 
     return new Kinetic.Shape({
 
         sceneFunc: function (ctx) {
 
-            console.log(direction)
             var img = document.createElement('img'),
-                self = this,
-                xm = (a * 218) + (b * (radius * 2)) - (window.innerWidth / 2),
-                ym = (a * 140) - (b * ((radius / 2) * 2)) + (window.innerHeight / 2),
-                imgx = xm,
+                self = this;
+
+
+            var xm = radius * cols,
+                ym = (radius) * rows;
+
+
+            var imgx = xm,
                 imgy = ym,
-                h = ((Math.PI * 2)/3);
+                h = ((Math.PI * 2) / 3);
 
             img.src = 'img/pattern.jpg';
+
 
             img.onload = function () {
 
@@ -69,7 +76,7 @@ var shape = function (a, b, radius, direction) {
 
 for (var a = 0; a < triangleHeight; a++) {
     for (var b = 0; b < iterations; b++) {
-        layer.add(shape(a, b, 100, (b % 2) === 1 ? 1 : -1));
+        layer.add(shape(a, b, 10, 100, (b % 2) === 1 ? 1 : -1));
     };
 };
 
